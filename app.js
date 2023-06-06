@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const logger = require("morgan");
-const photosRouter = require("./router/api/photos");
 const dotenv = require("dotenv");
+
+const photosRouter = require("./router/api/photos");
 
 dotenv.config();
 const app = express(); // app - веб-сервер

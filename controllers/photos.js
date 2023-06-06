@@ -1,6 +1,5 @@
 const Photo = require("../models/photo");
 
-
 const { HttpErorr, ctrlWrapper } = require("../helpers");
 
 const getAll = async (req, res) => {
@@ -8,7 +7,7 @@ const getAll = async (req, res) => {
     res.json(result);
 };
 
-const getById = async (req, res, next) => {
+const getById = async (req, res) => {
     const { id } = req.params;
     const result = await Photo.findOne({ _id: id });
     if (!result) {
