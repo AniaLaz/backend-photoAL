@@ -5,6 +5,8 @@ const photosRouter = require("./router/api/photos");
 
 const app = express(); // app - веб-сервер
 
+
+
 // app.use((req, res, next) => {
 //     console.log("fiorst midelvar");
 //     next();
