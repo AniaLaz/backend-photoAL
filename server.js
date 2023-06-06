@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 const app = require("./app");
 
-const DB_HOST =
-  "mongodb+srv://ania:ania123@cluster0.lkyftbb.mongodb.net/anna_backend?retryWrites=true&w=majority";
-
+const { DB_HOST, PORT = 3001 } = process.env;
+  
 mongoose
   .connect(DB_HOST)
   .then(() => {
-    app.listen(3001, () => console.log("server start"));
+    app.listen(PORT, () => console.log("server start"));
   })
   .catch((err) => {
     console.log(err.massege);

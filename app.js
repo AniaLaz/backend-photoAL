@@ -2,15 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const logger = require("morgan");
 const photosRouter = require("./router/api/photos");
+const dotenv = require("dotenv");
 
+dotenv.config();
 const app = express(); // app - веб-сервер
 
-
-
-// app.use((req, res, next) => {
-//     console.log("fiorst midelvar");
-//     next();
-// }) //midelvar виконається для любого запиту
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));

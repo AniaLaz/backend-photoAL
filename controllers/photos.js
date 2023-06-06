@@ -1,15 +1,16 @@
-const photos = require("../models/photos");
+const Photo = require("../models/photo");
+
 
 const { HttpErorr, ctrlWrapper } = require("../helpers");
 
 const getAll = async (req, res) => {
-    const result = await photos.getAll();
+    const result = await Photo.find();
     res.json(result);
 };
 
 const getById = async (req, res, next) => {
     const { id } = req.params;
-    const result = await photos.getById(id);
+    const result = await Photo.findOne({ _id: id });
     if (!result) {
       throw HttpErorr(404, "Not found");
     }
