@@ -1,5 +1,4 @@
 const express = require("express");
-// const photos = require("../../photos/photos.json");
 const controllers= require("../../controllers/photos")
 
 const router = express.Router(); // створюємо сторінку веб-сервер
