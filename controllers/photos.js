@@ -3,8 +3,16 @@ const {Photo} = require("../models/photo");
 const { HttpErorr, ctrlWrapper } = require("../helpers");
 
 const getAll = async (req, res) => {
-    const result = await Photo.find();
-    res.json(result);
+  const { page = 1, limit = 3 } = req.query;
+  console.log(page);
+  const skip = (page - 1) * limit;
+  
+  const result = await Photo.find({},"",{
+      skip,
+      limit,
+    });
+  res.json(result);
+
 };
 
 const getById = async (req, res) => {
