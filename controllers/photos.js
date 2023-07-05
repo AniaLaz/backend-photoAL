@@ -1,4 +1,4 @@
-const Photo = require("../models/photo");
+const {Photo} = require("../models/photo");
 
 const { HttpErorr, ctrlWrapper } = require("../helpers");
 
@@ -14,9 +14,30 @@ const getById = async (req, res) => {
       throw HttpErorr(404, "Not found");
     }
     res.json(result);
- };
+};
+ 
+const add = async (req, res) => {
+  console.log("req.body", req.bod);
+  const newPost = await Photo.create({ ...req.body });
+  res.status(201).json(newPost);
+};
+
+const deleteById = async (req, res, next) => {
+   const contactDelete = await Photo.findOneAndRemove({
+     _id: req.params.id,
+   });
+  if (!contactDelete) {
+    throw HttpErorr(404, "not found");
+  } else {
+    res.json({ message: "contact deleted", status: "200" });
+  }
+};
+
+
 
 module.exports = {
   getAll: ctrlWrapper(getAll),
   getById: ctrlWrapper(getById),
+  add: ctrlWrapper(add),
+  deleteById: ctrlWrapper(deleteById),
 };
