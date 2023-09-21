@@ -4,6 +4,7 @@ const logger = require("morgan");
 const dotenv = require("dotenv");
 
 const photosRouter = require("./router/api/photos");
+const emailRouter = require("./router/api/email");
 
 dotenv.config();
 const app = express(); // app - веб-сервер
@@ -14,6 +15,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use("/api/photos", photosRouter);
+app.use("/api/emails", emailRouter);
 
 app.use((req, res) => {
   res.status(404).json({
