@@ -7,7 +7,7 @@ const router = express.Router(); // створюємо сторінку веб-�
 
 router.get("/", controllers.getAll);
 router.post("/", validateBody(schemas.addSchema), controllers.add);
-
+router.delete("/:id", controllers.deleteById);
 
 
 module.exports = router;
