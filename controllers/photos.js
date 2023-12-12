@@ -12,8 +12,45 @@ const getAll = async (req, res) => {
       limit,
     });
   res.json(result);
-
 };
+
+const getLove = async (req, res) => {
+    const { page = 1, limit = 4 } = req.query;
+  console.log(page);
+  console.log("limit", limit);
+  console.log("res", req);
+    const skip = (page - 1) * limit;
+
+  const result = await Photo.find({
+    category: "love" }, "", {
+      skip,
+      limit,
+    });
+  res.json(result);
+};
+
+
+const getChildren = async (req, res) => {
+  const { page = 1, limit = 4 } = req.query;
+  console.log(page);
+  console.log("limit", limit);
+  console.log("res", req);
+  const skip = (page - 1) * limit;
+
+  const result = await Photo.find(
+    {
+      category: "children",
+    },
+    "",
+    {
+      skip,
+      limit,
+    }
+  );
+  res.json(result);
+};
+
+
 
 const getById = async (req, res) => {
     const { id } = req.params;
@@ -45,7 +82,9 @@ const deleteById = async (req, res, next) => {
 
 module.exports = {
   getAll: ctrlWrapper(getAll),
+  getLove: ctrlWrapper(getLove),
   getById: ctrlWrapper(getById),
   add: ctrlWrapper(add),
   deleteById: ctrlWrapper(deleteById),
+  getChildren: ctrlWrapper(getChildren),
 };

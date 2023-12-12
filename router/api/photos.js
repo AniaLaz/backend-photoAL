@@ -8,6 +8,10 @@ const router = express.Router(); // створюємо сторінку веб-�
 
 router.get("/", controllers.getAll);
 
+router.get("/love", controllers.getLove);
+
+router.get("/children", controllers.getChildren);
+
 router.get("/:id", controllers.getById);
 
 router.post("/", validateBody(schemas.addSchema), controllers.add);
